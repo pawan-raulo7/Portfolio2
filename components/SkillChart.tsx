@@ -33,6 +33,7 @@ export default function SkillChart({ skills }: SkillChartProps) {
             paddingAngle={5}
             dataKey="value"
           >
+            // @ts-ignore
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color || skillsData[index]?.color} />
             ))}
