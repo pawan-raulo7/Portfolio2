@@ -12,12 +12,43 @@ export default function Contact() {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "e237f833-e8d1-4ed0-af2e-ad4c22a053a2",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Error submitting the form. Please try again later.");
+    }
+
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -119,9 +150,9 @@ export default function Contact() {
                 <button
                   type="submit"
                   className="w-full px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap cursor-pointer"
-                  disabled={formData.message.length > 500}
+                  disabled={formData.message.length > 500 || isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
@@ -148,18 +179,25 @@ export default function Contact() {
                     <i className="ri-map-pin-line text-green-600 w-5 h-5 flex items-center justify-center"></i>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Location</h3>
-                    <p className="text-gray-600">Hyderabad, India</p>
+                    <h3 className="font-semibold text-gray-900">Github</h3>
+                    <a
+                      href="https://github.com/pawan-raulo7"
+                      className="text-gray-600"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      github.com/pawan-raulo7
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <i className="ri-time-line text-yellow-600 w-5 h-5 flex items-center justify-center"></i>
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i className="ri-github-fill w-4 h-4 flex items-center justify-center mr-2"></i>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Response Time</h3>
-                    <p className="text-gray-600">Within 24 hours</p>
+                    <h3 className="font-semibold text-gray-900">Location</h3>
+                    <p className="text-gray-600">Hyderabad, India</p>
                   </div>
                 </div>
               </div>
@@ -177,12 +215,12 @@ export default function Contact() {
                     <i className="ri-linkedin-fill text-blue-600 w-6 h-6 flex items-center justify-center"></i>
                   </a>
                   <a 
-                    href="https://github.com/pawan-raulo7" 
+                    href="mailto:pawanraulo@gmail.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors cursor-pointer"
                   >
-                    <i className="ri-github-fill text-gray-700 w-6 h-6 flex items-center justify-center"></i>
+                    <i className="ri-mail-fill w-4 h-4 flex items-center justify-center mr-2"></i>
                   </a>
                 </div>
               </div>
@@ -198,58 +236,6 @@ export default function Contact() {
                   Let's build something amazing together!
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Common questions about working with me
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">What's your typical project timeline?</h3>
-              <p className="text-gray-600">
-                Project timelines vary based on complexity. Simple websites take 2-4 weeks, 
-                while complex applications can take 2-6 months. I provide detailed timelines 
-                during our initial consultation.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Do you work with international clients?</h3>
-              <p className="text-gray-600">
-                Yes, I work with clients globally. I'm flexible with different time zones 
-                and use modern communication tools to ensure smooth collaboration regardless 
-                of location.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">What technologies do you specialize in?</h3>
-              <p className="text-gray-600">
-                I specialize in Python (Django, FastAPI), JavaScript (React, Angular), 
-                PostgreSQL, and Machine Learning. I'm also experienced in stock market 
-                analysis and data visualization.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg border border-gray-100">
-              <h3 className="font-semibold text-gray-900 mb-2">Do you provide ongoing support?</h3>
-              <p className="text-gray-600">
-                Yes, I offer maintenance and support packages for all projects. This includes 
-                bug fixes, updates, performance optimization, and feature enhancements based 
-                on your needs.
-              </p>
             </div>
           </div>
         </div>

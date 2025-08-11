@@ -1038,6 +1038,9 @@ video {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
+.hover\:underline:hover{
+  text-decoration-line: underline;
+}
 .focus\:border-gray-900:focus{
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity, 1));

@@ -17,10 +17,18 @@ const projects = [
   {
     title: "Chatbot",
     category: "Web Development",
-    description: "Full-stack e-commerce solution with Django backend, React frontend, and PostgreSQL database. Features include user authentication, payment processing, and inventory management.",
+    description: "AI-powered chatbot with Django backend, React frontend, and PostgreSQL database. Features include real-time messaging, NLP-based intent detection, and conversation history management.",
     technologies: [],
     image: "/images/gemini.png",
     link: "https://github.com/pawan-raulo7/Gemini.git"
+  },
+    {
+    title: "Recycled Products",
+    category: "Web Development",
+    description: "Zero-waste e-commerce platform with Django backend, React frontend, and PostgreSQL database. Features include user authentication, secure payment processing, eco-friendly product catalog, and inventory management.",
+    technologies: [],
+    image: "/images/recycle.png",
+    link: "https://github.com/pawan-raulo7/Eco-Tech-Store.git "
   },
 ];
 

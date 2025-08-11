@@ -82,7 +82,7 @@ export default function About() {
                 <i className="ri-building-line text-green-600 text-xl w-6 h-6 flex items-center justify-center"></i>
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Internship</h3>
-              <p className="text-gray-600">Software Developer Intern at Bharat Economic Forum</p>
+              <p className="text-gray-600">Database Developer Intern at Bharat Economic Forum</p>
             </div>
 
             <div className="bg-white p-8 rounded-lg border border-gray-100">
