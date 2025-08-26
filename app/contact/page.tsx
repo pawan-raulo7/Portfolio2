@@ -179,15 +179,8 @@ export default function Contact() {
                     <i className="ri-map-pin-line text-green-600 w-5 h-5 flex items-center justify-center"></i>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Github</h3>
-                    <a
-                      href="https://github.com/pawan-raulo7"
-                      className="text-gray-600"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      github.com/pawan-raulo7
-                    </a>
+                    <h3 className="font-semibold text-gray-900">Location</h3>
+                    <p className="text-gray-600">Hyderabad, India</p>
                   </div>
                 </div>
 
@@ -196,8 +189,10 @@ export default function Contact() {
                     <i className="ri-github-fill w-4 h-4 flex items-center justify-center mr-2"></i>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Location</h3>
-                    <p className="text-gray-600">Hyderabad, India</p>
+                    <h3 className="font-semibold text-gray-900">Github</h3>
+                    <a href="https://github.com/pawan-raulo7" className="text-gray-600" target="_blank" rel="noopener noreferrer">
+                      github.com/pawan-raulo7
+                    </a>
                   </div>
                 </div>
               </div>
